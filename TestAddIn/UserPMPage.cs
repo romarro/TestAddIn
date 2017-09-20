@@ -115,11 +115,16 @@ namespace TestAddIn
             options = (int)swAddControlOptions_e.swControlOptions_Enabled |
                       (int)swAddControlOptions_e.swControlOptions_Visible;
 
-            selection1 = (IPropertyManagerPageSelectionbox)group1.AddControl(selection1ID, controlType, "Sample Selection", align, options, "Displays features selected in main view");
+            selection1 = (IPropertyManagerPageSelectionbox)group1.AddControl(selection1ID, controlType, 
+                "Selection", align, 
+                options, 
+                "Select an edge in the main view");
+
             if (selection1 != null)
             {
-                int[] filter = { (int)swSelectType_e.swSelEDGES, (int)swSelectType_e.swSelVERTICES };
-                selection1.Height = 40;
+                int[] filter = { (int)swSelectType_e.swSelEDGES };
+                selection1.Height = 25;
+                selection1.SingleEntityOnly = true;
                 selection1.SetSelectionFilters(filter);
             }
 
@@ -129,11 +134,16 @@ namespace TestAddIn
             options = (int)swAddControlOptions_e.swControlOptions_Enabled |
                       (int)swAddControlOptions_e.swControlOptions_Visible;
 
-            num1 = (IPropertyManagerPageNumberbox)group1.AddControl(num1ID, controlType, "Sample Numberbox", align, options, "Allows for numerical input");
+            num1 = (IPropertyManagerPageNumberbox)group1.AddControl(num1ID, controlType,
+                "Edge size", align, 
+                options, 
+                "Select and edge length");
+
             if (num1 != null)
             {
-                num1.Value = 50.0;
-                num1.SetRange((int)swNumberboxUnitType_e.swNumberBox_UnitlessDouble, 0.0, 100.0, 0.01, true);
+                num1.Value = 0;
+                num1.SetRange2((int)swNumberboxUnitType_e.swNumberBox_Length, 0.0, 0.1, true, 0.001, 0.005, 0.0001);
+                num1.DisplayedUnit = (int)swLengthUnit_e.swMM;
             }
 
             tab1.AddGroupBox(group1ID, "", 0);
