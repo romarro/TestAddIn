@@ -172,6 +172,17 @@ namespace TestAddIn
 
         public bool OnTabClicked(int Id)
         {
+            if(Id == UserPMPage.tab1ID)
+            {
+                //Hide all the tab2 controls
+                //Display all the tab1 controls
+                userAddin.ppage.DisplayControls(1);
+            }
+            else{
+                //Hide all the tab1 controls
+                //Display all the tab2 controls
+                userAddin.ppage.DisplayControls(2);
+            }
             return true;
         }
 

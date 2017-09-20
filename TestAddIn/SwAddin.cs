@@ -43,7 +43,7 @@ namespace TestAddIn
         #endregion
 
         #region Property Manager Variables
-        UserPMPage ppage = null;
+        public UserPMPage ppage = null;
         #endregion
 
 
